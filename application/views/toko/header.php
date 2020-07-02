@@ -141,9 +141,8 @@
 											<!-- <small>3 Item(s) selected</small> -->
 											<h5>SUBTOTAL: Rp. <?php echo number_format($total['total'],0,',','.')?></h5>
 										</div>
-										<div class="cart-btns">
-											<a href="<?php echo base_url('toko/lihat_keranjang/'.$belanja->customer_id)?>">Lihat Keranjang</a>
-											<a href="<?php echo base_url('toko/check_out/'.$belanja->kode_pembelian)?>">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+										<div >
+											<a href="<?php echo base_url('toko/check_out/'.$belanja->kode_pembelian)?>" class="btn btn-danger">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 
