@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jun 2020 pada 10.47
--- Versi server: 10.1.34-MariaDB
--- Versi PHP: 5.6.37
+-- Generation Time: Jul 02, 2020 at 04:59 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -38,17 +38,22 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `deskripsi_barang`, `harga`, `foto`) VALUES
 (5, 'BRG14112019001', '6 PCS COOKWARE SET', 'ini adalah deskripsi barang', 100000, 'AMAZING_PAN_HAKASIMA_png.jpg'),
 (6, 'BRG14112019002', 'NEW AMAZING PAN', '', 150000, 'Hakasima_6_Pcs_Casserole_Set.jpg'),
 (7, 'BRG05052020003', 'Ampia', 'Ampia', 250000, 'AMPIA.jpg'),
-(8, 'BRG07062020004', 'Wajan', '<p>Wajan Penggorengan</p>\r\n', 150000, 'user1581563125.png');
+(8, 'BRG07062020004', 'Wajan', '<p>Wajan Penggorengan</p>\r\n', 150000, 'user1581563125.png'),
+(9, 'BRG14112019001', '6 PCS COOKWARE SET', 'ini adalah deskripsi barang', 100000, 'AMAZING_PAN_HAKASIMA_png.jpg'),
+(10, 'BRG14112019002', 'NEW AMAZING PAN', '', 150000, 'Hakasima_6_Pcs_Casserole_Set.jpg'),
+(11, 'BRG05052020003', 'Ampia', 'Ampia', 250000, 'AMPIA.jpg'),
+(12, 'BRG07062020004', 'Wajan', '<p>Wajan Penggorengan</p>\r\n', 150000, 'user1581563125.png'),
+(13, 'BRG23062020005', 'dfasfas', '<p>ladkfjlajfkadf</p>\r\n', 400000, 'sales_stock2.PNG');
 
 --
--- Trigger `barang`
+-- Triggers `barang`
 --
 DELIMITER $$
 CREATE TRIGGER `INST` AFTER INSERT ON `barang` FOR EACH ROW BEGIN
@@ -62,7 +67,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang_masuk`
+-- Table structure for table `barang_masuk`
 --
 
 CREATE TABLE `barang_masuk` (
@@ -72,7 +77,7 @@ CREATE TABLE `barang_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang_masuk`
+-- Dumping data for table `barang_masuk`
 --
 
 INSERT INTO `barang_masuk` (`id`, `id_barang_masuk`, `tanggal`) VALUES
@@ -83,7 +88,7 @@ INSERT INTO `barang_masuk` (`id`, `id_barang_masuk`, `tanggal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_barang_masuk`
+-- Table structure for table `detail_barang_masuk`
 --
 
 CREATE TABLE `detail_barang_masuk` (
@@ -96,7 +101,7 @@ CREATE TABLE `detail_barang_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_barang_masuk`
+-- Dumping data for table `detail_barang_masuk`
 --
 
 INSERT INTO `detail_barang_masuk` (`id`, `id_barang_masuk`, `kode_barang`, `nama_barang`, `jumlah`, `tanggal`) VALUES
@@ -105,7 +110,7 @@ INSERT INTO `detail_barang_masuk` (`id`, `id_barang_masuk`, `kode_barang`, `nama
 (19, 'PNR-07062020-003', 'BRG07062020004', 'Wajan', 10, '2020-06-07');
 
 --
--- Trigger `detail_barang_masuk`
+-- Triggers `detail_barang_masuk`
 --
 DELIMITER $$
 CREATE TRIGGER `delete` AFTER DELETE ON `detail_barang_masuk` FOR EACH ROW BEGIN
@@ -123,7 +128,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_ongkir`
+-- Table structure for table `detail_ongkir`
 --
 
 CREATE TABLE `detail_ongkir` (
@@ -138,7 +143,7 @@ CREATE TABLE `detail_ongkir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_ongkir`
+-- Dumping data for table `detail_ongkir`
 --
 
 INSERT INTO `detail_ongkir` (`id`, `kode_ongkir`, `ekspedisi`, `id_provinsi`, `ongkir`, `kabupaten`, `layanan`, `lama_pengiriman`) VALUES
@@ -151,7 +156,7 @@ INSERT INTO `detail_ongkir` (`id`, `kode_ongkir`, `ekspedisi`, `id_provinsi`, `o
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pembelian`
+-- Table structure for table `detail_pembelian`
 --
 
 CREATE TABLE `detail_pembelian` (
@@ -170,17 +175,23 @@ CREATE TABLE `detail_pembelian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_pembelian`
+-- Dumping data for table `detail_pembelian`
 --
 
 INSERT INTO `detail_pembelian` (`id`, `kode_pembelian`, `kode_barang`, `nama_barang`, `harga`, `qty`, `total`, `jenis_beli`, `tenor`, `angsuran`, `status`, `customer_id`) VALUES
-(62, 'TRX-CUS25042001', 'BRG05052020003', 'Ampia', 250000, 1, 250000, '', 0, 0, 'baru', 'CUS25042020001'),
-(63, 'TRX-CUS07062001', 'BRG05052020003', 'Ampia', 250000, 2, 500000, '', 0, 0, 'baru', 'CUS07062020003');
+(66, 'TRX-CUS25042001', 'BRG14112019001', '6 PCS COOKWARE SET', 100000, 1, 100000, '', 0, 0, 'proses', 'CUS25042020001'),
+(67, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(68, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(69, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(70, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(71, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(72, 'TRX-CUS25042003', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(73, 'TRX-CUS25042004', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_skema`
+-- Table structure for table `detail_skema`
 --
 
 CREATE TABLE `detail_skema` (
@@ -196,7 +207,7 @@ CREATE TABLE `detail_skema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_skema`
+-- Dumping data for table `detail_skema`
 --
 
 INSERT INTO `detail_skema` (`id`, `id_skema`, `kode_barang`, `harga`, `tenor`, `angsuran`, `komisi`, `kontes`, `jenis_pembelian`) VALUES
@@ -211,7 +222,7 @@ INSERT INTO `detail_skema` (`id`, `id_skema`, `kode_barang`, `harga`, `tenor`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ekspedisi`
+-- Table structure for table `ekspedisi`
 --
 
 CREATE TABLE `ekspedisi` (
@@ -220,7 +231,7 @@ CREATE TABLE `ekspedisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ekspedisi`
+-- Dumping data for table `ekspedisi`
 --
 
 INSERT INTO `ekspedisi` (`id`, `ekspedisi`) VALUES
@@ -231,7 +242,7 @@ INSERT INTO `ekspedisi` (`id`, `ekspedisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kabupaten`
+-- Table structure for table `kabupaten`
 --
 
 CREATE TABLE `kabupaten` (
@@ -242,7 +253,7 @@ CREATE TABLE `kabupaten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kabupaten`
+-- Dumping data for table `kabupaten`
 --
 
 INSERT INTO `kabupaten` (`id`, `kode_provinsi`, `kode_kabupaten`, `kabupaten`) VALUES
@@ -254,7 +265,7 @@ INSERT INTO `kabupaten` (`id`, `kode_provinsi`, `kode_kabupaten`, `kabupaten`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konsumen`
+-- Table structure for table `konsumen`
 --
 
 CREATE TABLE `konsumen` (
@@ -273,7 +284,7 @@ CREATE TABLE `konsumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `konsumen`
+-- Dumping data for table `konsumen`
 --
 
 INSERT INTO `konsumen` (`id`, `customer_id`, `nama_lengkap`, `no_ktp`, `no_hp`, `jenis_kelamin`, `tanggal_lahir`, `alamat`, `email`, `password`, `foto`, `role`) VALUES
@@ -284,7 +295,7 @@ INSERT INTO `konsumen` (`id`, `customer_id`, `nama_lengkap`, `no_ktp`, `no_hp`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `layanan`
+-- Table structure for table `layanan`
 --
 
 CREATE TABLE `layanan` (
@@ -293,7 +304,7 @@ CREATE TABLE `layanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `layanan`
+-- Dumping data for table `layanan`
 --
 
 INSERT INTO `layanan` (`id`, `layanan`) VALUES
@@ -305,7 +316,7 @@ INSERT INTO `layanan` (`id`, `layanan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ongkir`
+-- Table structure for table `ongkir`
 --
 
 CREATE TABLE `ongkir` (
@@ -315,7 +326,7 @@ CREATE TABLE `ongkir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ongkir`
+-- Dumping data for table `ongkir`
 --
 
 INSERT INTO `ongkir` (`id`, `kode_ongkir`, `ekspedisi`) VALUES
@@ -325,7 +336,7 @@ INSERT INTO `ongkir` (`id`, `kode_ongkir`, `ekspedisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -349,7 +360,7 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pembayaran`
+-- Dumping data for table `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id`, `id_prospek`, `id_customer`, `nama`, `alamat`, `tanggal`, `no_ktp`, `no_hp`, `kode_barang`, `nama_barang`, `jumlah`, `jenis_pembelian`, `harga`, `tenor`, `angsuran`, `status`, `nik_sales`) VALUES
@@ -359,10 +370,13 @@ INSERT INTO `pembayaran` (`id`, `id_prospek`, `id_customer`, `nama`, `alamat`, `
 (8, 'PRS-1401197-013', 'CUS14112019013', 'Ahmad Zaelani', '<p>JAMBI</p>', '2019-11-14', '1571020202950041', '089562100774', 'BRG11112019006', '6 PCS COOKWARE SET', 1, 'KREDIT', 100000, 2, 200000, 'paid', '1401197'),
 (9, 'PRS-017', 'CUS05062020016', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-05-11', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin'),
 (10, 'PRS-019', 'CUS05062020017', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-05', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin'),
-(11, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin');
+(11, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin'),
+(12, 'PRS-025', 'CUS23062020020', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin'),
+(13, 'PRS-026', 'CUS23062020021', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'paid', 'admin'),
+(14, 'PRS-CUS25042020001-027', 'CUS25042020001', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-24', '1571020202950041', '085296072649', 'BRG14112019001', '6 PCS COOKWARE SET', 1, 'KREDIT', 234, 10, 200, 'paid', 'admin');
 
 --
--- Trigger `pembayaran`
+-- Triggers `pembayaran`
 --
 DELIMITER $$
 CREATE TRIGGER `kurangi` AFTER INSERT ON `pembayaran` FOR EACH ROW BEGIN
@@ -374,7 +388,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembelian`
+-- Table structure for table `pembelian`
 --
 
 CREATE TABLE `pembelian` (
@@ -388,13 +402,25 @@ CREATE TABLE `pembelian` (
   `kabupaten` varchar(30) DEFAULT NULL,
   `ekspedisi` varchar(50) DEFAULT NULL,
   `layanan` varchar(50) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL
+  `status` varchar(50) DEFAULT NULL,
+  `pengiriman` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembelian`
+--
+
+INSERT INTO `pembelian` (`id`, `kode_pembelian`, `tanggal`, `customer_id`, `alamat`, `provinsi`, `kecamatan`, `kabupaten`, `ekspedisi`, `layanan`, `status`, `pengiriman`) VALUES
+(1, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0),
+(2, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0),
+(3, 'TRX-CUS25042002', '2020-06-23', 'CUS25042020001', 'sdfasdfdagg', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000),
+(4, 'TRX-CUS25042003', '2020-06-24', 'CUS25042020001', 'laksd;lfa', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000),
+(5, 'TRX-CUS25042004', '2020-07-02', 'CUS25042020001', '<p>asdasdfasdf</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'selesai', 10000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `prospek`
+-- Table structure for table `prospek`
 --
 
 CREATE TABLE `prospek` (
@@ -414,23 +440,27 @@ CREATE TABLE `prospek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `prospek`
+-- Dumping data for table `prospek`
 --
 
 INSERT INTO `prospek` (`id`, `id_prospek`, `id_customer`, `nama`, `alamat`, `tanggal`, `no_ktp`, `no_hp`, `kode_barang`, `nama_barang`, `jumlah`, `status`, `nik_sales`) VALUES
-(1, 'PRS-1401197-010', 'CUS13112019010', 'Eko Kurniadi', '<p>jambi</p>', '2019-02-02', '1571020202950041', '089562100774', 'BRG10112019005', '6 PCS COOKWARE SET', 1, 'NOT DEAL', '1401197'),
+(1, 'PRS-1401197-010', 'CUS13112019010', 'Eko Kurniadi', '<p>jambi</p>', '2019-02-02', '1571020202950041', '089562100774', 'BRG10112019005', '6 PCS COOKWARE SET', 1, 'baru', '1401197'),
 (2, 'PRS-ADMIN003', 'CUS11112019003', 'Ahmad Zaelani', '<p>Jambi</p>', '2019-11-11', '1571020202950042', '089562100774', 'BRG10112019005', '6 PCS COOKWARE SET', 1, 'DEAL', 'admin'),
 (3, 'PRS-1401197-008', 'CUS11112019008', 'Joko', '<p>Jambi</p>', '2019-11-12', '1571020202950041', '089562100774', 'BRG11112019006', '6 PCS COOKWARE SET', 1, 'paid', '1401197'),
 (4, 'PRS-1401197-013', 'CUS14112019013', 'Ahmad Zaelani', '<p>JAMBI</p>', '2019-11-14', '1571020202950041', '089562100774', 'BRG11112019006', '6 PCS COOKWARE SET', 1, 'paid', '1401197'),
 (5, 'PRS-1401197-015', 'CUS14112019015', 'Ahmad Zaelani', '<p>JAMBI</p>', '2019-11-14', '1571020202950041', '089562100774', 'BRG14112019002', 'NEW AMAZING PAN', 1, 'DEAL', '1401197'),
 (14, 'PRS-017', 'CUS05062020016', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-05-11', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin'),
 (15, 'PRS-019', 'CUS05062020017', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-05', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin'),
-(16, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin');
+(16, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin'),
+(17, 'PRS-025', 'CUS23062020020', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin'),
+(19, 'PRS-026', 'CUS23062020020', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'paid', 'admin'),
+(20, 'PRS-CUS25042020001-027', 'CUS25042020001', 'Diki', 'Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan', '2020-06-24', '1571020202950041', '085296072649', 'BRG14112019001', '6 PCS COOKWARE SET', 1, 'paid', 'admin'),
+(21, 'PRS-029', 'CUS25062020021', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-25', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'DEAL', 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `provinsi`
+-- Table structure for table `provinsi`
 --
 
 CREATE TABLE `provinsi` (
@@ -439,7 +469,7 @@ CREATE TABLE `provinsi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `provinsi`
+-- Dumping data for table `provinsi`
 --
 
 INSERT INTO `provinsi` (`id`, `provinsi`) VALUES
@@ -451,7 +481,7 @@ INSERT INTO `provinsi` (`id`, `provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales`
+-- Table structure for table `sales`
 --
 
 CREATE TABLE `sales` (
@@ -466,7 +496,7 @@ CREATE TABLE `sales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sales`
+-- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id`, `nik`, `nama_lengkap`, `jenis_kelamin`, `nomor_hp`, `password`, `role`, `foto`) VALUES
@@ -476,7 +506,7 @@ INSERT INTO `sales` (`id`, `nik`, `nama_lengkap`, `jenis_kelamin`, `nomor_hp`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales_order`
+-- Table structure for table `sales_order`
 --
 
 CREATE TABLE `sales_order` (
@@ -500,7 +530,7 @@ CREATE TABLE `sales_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sales_order`
+-- Dumping data for table `sales_order`
 --
 
 INSERT INTO `sales_order` (`id`, `id_prospek`, `id_customer`, `nama`, `alamat`, `tanggal`, `no_ktp`, `no_hp`, `kode_barang`, `nama_barang`, `jumlah`, `jenis_pembelian`, `harga`, `tenor`, `angsuran`, `status`, `nik_sales`) VALUES
@@ -509,12 +539,15 @@ INSERT INTO `sales_order` (`id`, `id_prospek`, `id_customer`, `nama`, `alamat`, 
 (7, 'PRS-1401197-008', 'CUS11112019008', 'Joko', '<p>Jambi</p>', '2019-11-12', '1571020202950041', '089562100774', 'BRG11112019006', '6 PCS COOKWARE SET', 1, 'CASH', 100000, 0, 0, 'confirm', '1401197'),
 (8, 'PRS-1401197-013', 'CUS14112019013', 'Ahmad Zaelani', '<p>JAMBI</p>', '2019-11-14', '1571020202950041', '089562100774', 'BRG11112019006', '6 PCS COOKWARE SET', 1, 'KREDIT', 100000, 2, 200000, 'confirm', '1401197'),
 (9, 'PRS-017', 'CUS05062020016', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-05-11', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'confirm', 'admin'),
-(10, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'confirm', 'admin');
+(10, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', '<p>Jambi</p>', '2020-06-07', '1523686523125678', '081366424345', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'confirm', 'admin'),
+(11, 'PRS-025', 'CUS23062020020', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'confirm', 'admin'),
+(12, 'PRS-026', 'CUS23062020021', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-23', '1571020202950041', '085296072649', 'BRG05052020003', 'Ampia', 1, 'KREDIT', 100000, 6, 20000, 'confirm', 'admin'),
+(13, 'PRS-CUS25042020001-027', 'CUS25042020001', 'Diki', '<p>Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan</p>', '2020-06-24', '1571020202950041', '085296072649', 'BRG14112019001', '6 PCS COOKWARE SET', 1, 'KREDIT', 234, 10, 200, 'paid', 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `skema_kredit`
+-- Table structure for table `skema_kredit`
 --
 
 CREATE TABLE `skema_kredit` (
@@ -524,7 +557,7 @@ CREATE TABLE `skema_kredit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `skema_kredit`
+-- Dumping data for table `skema_kredit`
 --
 
 INSERT INTO `skema_kredit` (`id`, `id_skema`, `kode_barang`) VALUES
@@ -538,7 +571,7 @@ INSERT INTO `skema_kredit` (`id`, `id_skema`, `kode_barang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stok`
+-- Table structure for table `stok`
 --
 
 CREATE TABLE `stok` (
@@ -549,19 +582,30 @@ CREATE TABLE `stok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `stok`
+-- Dumping data for table `stok`
 --
 
 INSERT INTO `stok` (`id`, `kode_barang`, `nama_barang`, `stok`) VALUES
-(4, 'BRG14112019001', '6 PCS COOKWARE SET', 17),
+(4, 'BRG14112019001', '6 PCS COOKWARE SET', 16),
 (5, 'BRG14112019002', 'NEW AMAZING PAN', 19),
-(6, 'BRG05052020003', 'Ampia', -3),
-(7, 'BRG07062020004', 'Wajan', 10);
+(6, 'BRG05052020003', 'Ampia', -5),
+(7, 'BRG07062020004', 'Wajan', 10),
+(8, 'BRG14112019001', '6 PCS COOKWARE SET', -1),
+(9, 'BRG14112019002', 'NEW AMAZING PAN', 0),
+(12, 'BRG14112019001', '6 PCS COOKWARE SET', 16),
+(13, 'BRG14112019002', 'NEW AMAZING PAN', 19),
+(14, 'BRG05052020003', 'Ampia', -5),
+(15, 'BRG07062020004', 'Wajan', 10),
+(16, 'BRG14112019001', '6 PCS COOKWARE SET', -1),
+(17, 'BRG14112019002', 'NEW AMAZING PAN', 0),
+(18, 'BRG05052020003', 'Ampia', 0),
+(19, 'BRG07062020004', 'Wajan', 0),
+(20, 'BRG23062020005', 'dfasfas', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tagihan_konsumen`
+-- Table structure for table `tagihan_konsumen`
 --
 
 CREATE TABLE `tagihan_konsumen` (
@@ -576,27 +620,27 @@ CREATE TABLE `tagihan_konsumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tagihan_konsumen`
+-- Dumping data for table `tagihan_konsumen`
 --
 
 INSERT INTO `tagihan_konsumen` (`id`, `id_prospek`, `id_customer`, `nama_konsumen`, `nominal`, `tanggal_pembayaran`, `keterangan`, `status`) VALUES
-(15, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(16, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(17, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(18, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(19, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(20, 'PRS-017', 'CUS05062020016', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(21, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '0000-00-00', '', 'Angsuran'),
-(22, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '0000-00-00', '', 'Angsuran'),
-(23, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '0000-00-00', '', 'Angsuran'),
-(24, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '0000-00-00', '', 'Angsuran'),
-(25, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '0000-00-00', '', 'Angsuran'),
-(26, 'PRS-021', 'CUS07062020018', 'Eko Kurniadi', 20000, '2020-06-07', '<p>Angsuran ke-1</p>', 'Angsuran');
+(27, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '2020-06-23', '<p>Angsuran ke 1</p>', 'Angsuran'),
+(28, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(29, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(30, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(31, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(32, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(33, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(34, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(35, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(36, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(37, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(38, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tentang`
+-- Table structure for table `tentang`
 --
 
 CREATE TABLE `tentang` (
@@ -605,7 +649,7 @@ CREATE TABLE `tentang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tentang`
+-- Dumping data for table `tentang`
 --
 
 INSERT INTO `tentang` (`id`, `tentang_kami`) VALUES
@@ -614,7 +658,7 @@ INSERT INTO `tentang` (`id`, `tentang_kami`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -626,7 +670,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `role`) VALUES
@@ -637,269 +681,269 @@ INSERT INTO `user` (`id`, `nama`, `username`, `password`, `role`) VALUES
 --
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `barang_masuk`
+-- Indexes for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `detail_barang_masuk`
+-- Indexes for table `detail_barang_masuk`
 --
 ALTER TABLE `detail_barang_masuk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `detail_ongkir`
+-- Indexes for table `detail_ongkir`
 --
 ALTER TABLE `detail_ongkir`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `detail_pembelian`
+-- Indexes for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `detail_skema`
+-- Indexes for table `detail_skema`
 --
 ALTER TABLE `detail_skema`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `ekspedisi`
+-- Indexes for table `ekspedisi`
 --
 ALTER TABLE `ekspedisi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kabupaten`
+-- Indexes for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `konsumen`
+-- Indexes for table `konsumen`
 --
 ALTER TABLE `konsumen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `layanan`
+-- Indexes for table `layanan`
 --
 ALTER TABLE `layanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `ongkir`
+-- Indexes for table `ongkir`
 --
 ALTER TABLE `ongkir`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pembayaran`
+-- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pembelian`
+-- Indexes for table `pembelian`
 --
 ALTER TABLE `pembelian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `prospek`
+-- Indexes for table `prospek`
 --
 ALTER TABLE `prospek`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `provinsi`
+-- Indexes for table `provinsi`
 --
 ALTER TABLE `provinsi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sales`
+-- Indexes for table `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sales_order`
+-- Indexes for table `sales_order`
 --
 ALTER TABLE `sales_order`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `skema_kredit`
+-- Indexes for table `skema_kredit`
 --
 ALTER TABLE `skema_kredit`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `stok`
+-- Indexes for table `stok`
 --
 ALTER TABLE `stok`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tagihan_konsumen`
+-- Indexes for table `tagihan_konsumen`
 --
 ALTER TABLE `tagihan_konsumen`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indeks untuk tabel `tentang`
+-- Indexes for table `tentang`
 --
 ALTER TABLE `tentang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `barang_masuk`
+-- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_barang_masuk`
+-- AUTO_INCREMENT for table `detail_barang_masuk`
 --
 ALTER TABLE `detail_barang_masuk`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_ongkir`
+-- AUTO_INCREMENT for table `detail_ongkir`
 --
 ALTER TABLE `detail_ongkir`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pembelian`
+-- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_skema`
+-- AUTO_INCREMENT for table `detail_skema`
 --
 ALTER TABLE `detail_skema`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `ekspedisi`
+-- AUTO_INCREMENT for table `ekspedisi`
 --
 ALTER TABLE `ekspedisi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `kabupaten`
+-- AUTO_INCREMENT for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `konsumen`
+-- AUTO_INCREMENT for table `konsumen`
 --
 ALTER TABLE `konsumen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `layanan`
+-- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `ongkir`
+-- AUTO_INCREMENT for table `ongkir`
 --
 ALTER TABLE `ongkir`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `pembayaran`
+-- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `pembelian`
+-- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `prospek`
+-- AUTO_INCREMENT for table `prospek`
 --
 ALTER TABLE `prospek`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `provinsi`
+-- AUTO_INCREMENT for table `provinsi`
 --
 ALTER TABLE `provinsi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `sales`
+-- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `sales_order`
+-- AUTO_INCREMENT for table `sales_order`
 --
 ALTER TABLE `sales_order`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `skema_kredit`
+-- AUTO_INCREMENT for table `skema_kredit`
 --
 ALTER TABLE `skema_kredit`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `stok`
+-- AUTO_INCREMENT for table `stok`
 --
 ALTER TABLE `stok`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `tagihan_konsumen`
+-- AUTO_INCREMENT for table `tagihan_konsumen`
 --
 ALTER TABLE `tagihan_konsumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT untuk tabel `tentang`
+-- AUTO_INCREMENT for table `tentang`
 --
 ALTER TABLE `tentang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
