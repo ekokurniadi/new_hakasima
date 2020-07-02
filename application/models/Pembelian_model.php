@@ -48,20 +48,7 @@ class Pembelian_model extends CI_Model
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
-        $this->db->order_by($this->id, $this->order);
-        $this->db->like('id', $q);
-	$this->db->or_like('kode_pembelian', $q);
-	$this->db->or_like('tanggal', $q);
-	$this->db->or_like('customer_id', $q);
-	$this->db->or_like('alamat', $q);
-	$this->db->or_like('provinsi', $q);
-	$this->db->or_like('kecamatan', $q);
-	$this->db->or_like('kabupaten', $q);
-	$this->db->or_like('ekspedisi', $q);
-	$this->db->or_like('layanan', $q);
-	$this->db->or_like('status', $q);
-	$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+       return $this->db->query("select * from pembelian where status !='selesai'")->result();
     }
 
     // insert data
