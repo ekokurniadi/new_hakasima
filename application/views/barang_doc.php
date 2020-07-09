@@ -32,7 +32,7 @@
 		      <td><?php echo ++$start ?></td>
 		      <td><?php echo $barang->kode_barang ?></td>
 		      <td><?php echo $barang->nama_barang ?></td>
-		      <td><?php echo $barang->foto ?></td>	
+		      <td><img src="image/<?php echo $barang->foto?>" alt="" width="100px"></td>	
                 </tr>
                 <?php
             }

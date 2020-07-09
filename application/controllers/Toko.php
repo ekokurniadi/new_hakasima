@@ -260,7 +260,8 @@ class Toko extends MY_Controller {
     public function bayar()
     {
        $cust_id=$_SESSION['customer_id'];
-       $data_kredit=$this->db->query("SELECT a.id_prospek,a.kode_barang,b.* from prospek a join tagihan_konsumen b on a.id_prospek=b.id_prospek where b.id_customer='$cust_id'")->result();
+       echo $cust_id;   
+       $data_kredit=$this->db->query("SELECT a.id_prospek,a.kode_barang,a.nama_barang,b.* from prospek a join tagihan_konsumen b on a.id_prospek=b.id_prospek where b.id_customer='$cust_id'")->result();
        $data=array(
            'detail'=>$data_kredit,
        );

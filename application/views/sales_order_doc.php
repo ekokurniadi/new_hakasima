@@ -11,7 +11,8 @@
             }
             .word-table tr th, .word-table tr td{
                 border:1px solid black !important; 
-                padding: 5px 10px;
+                padding: 0px 0px;
+				font-size:10px;
             }
         </style>
     </head>
@@ -38,7 +39,7 @@
 		<th>Nik Sales</th>
 		
             </tr><?php
-            foreach ($sales_order_data as $sales_order)
+            foreach ($sales_order_data as $sales_order_data)
             {
                 ?>
                 <tr>

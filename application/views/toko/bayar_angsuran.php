@@ -9,9 +9,10 @@
 										<th>No</th>
 										<th>Kode Pembelian</th>
 										<th>Kode Barang</th>
+										<th>Nama Barang</th>
 										<th>Nominal</th>
 										<th>Status</th>
-										<th>Action</th>
+										<!-- <th>Action</th> -->
 									</tr>
 								</thead>
 								<tbody>
@@ -22,9 +23,18 @@
 										<td><?=$no++;?></td>
 										<td><?=$dt->id_prospek?></td>
 										<td><?=$dt->kode_barang?></td>
-										<td><?=$dt->nominal?></td>
-										<td><?=$dt->status?></td>
-										<td><a href="<?php echo base_url('toko/proses_bayar/'.$dt->id)?>" class="btn btn-danger"><i class="fa fa-edit"></i> Bayar</a></td>
+										<td><?=$dt->nama_barang?></td>
+										<td>Rp. <?=number_format($dt->nominal,0,',','.')?></td>
+										<td>
+										<?php if($dt->status=='Angsuran'){
+											$status="Belum di bayar";
+										} else {
+											$status="Lunas";
+										}
+										?>
+										<?=$status;?>
+										</td>
+										
 									</tr>
 								<?php endforeach;?>
 								</tbody>
@@ -34,3 +44,5 @@
 				</div>
 			</div>
 		</div>
+
+		<br><br><br><br><br><br><br>

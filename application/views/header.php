@@ -282,10 +282,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('barang/excel')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Barang</a></li>
-            <li><a href="<?php echo base_url('stok/excel')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Stok</a></li>
-            <li><a href="<?php echo base_url('sales_order/excel')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Sales Order</a></li>
-            <li><a href="<?php echo base_url('user/excel')?>"><i class="fa fa-file-excel-o"></i> Laporan User</a></li>
+            <li><a href="<?php echo base_url('laporan_pdf/cetak_barang')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Barang</a></li>
+            <li><a href="<?php echo base_url('laporan_pdf/cetak_stok')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Stok</a></li>
+            <li><a href="<?php echo base_url('laporan_pdf/sales_order')?>"><i class="fa fa-file-excel-o"></i> Laporan Data Sales Order</a></li>
+            <li><a href="<?php echo base_url('laporan_pdf/cetak_user')?>"><i class="fa fa-file-excel-o"></i> Laporan User</a></li>
           </ul>
         </li>
          <li>
