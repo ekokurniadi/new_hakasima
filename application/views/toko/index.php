@@ -85,10 +85,12 @@
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
 													<a href="#quickview<?=$b->id?>" id="<?=$b->id?>"  data-toggle="modal" class="btn btn-success"> <span class="fa fa-eye"> Detail</span></a>
 													<a href="#quick<?=$b->id?>" id="<?=$b->id?>"  data-toggle="modal" class="btn btn-primary"> <span class="fa fa-eye"> Simulasi Kredit</span></a>
+													<br>
+													
 												</div>
 											</div>
 											<div class="add-to-cart">
-                                                <!-- <a class="add-to-cart-btn" href="<?=base_url('toko/add_to_cart/'.$b->kode_barang)?>"> add to cart</a> -->
+											<a href="#quicke<?=$b->id?>" id="<?=$b->id?>"  data-toggle="modal" class="btn btn-warning"> <span class="fa fa-eye"> Review</span></a>
 											 <?php
 											 $id_customer=$_SESSION['customer_id'];
 											 $cek=$this->db->query("SELECT count(*) as cek FROM prospek where id_customer='$id_customer' and status='baru'")->row_array();
@@ -134,6 +136,20 @@
               <div class="modal-body" id="IsiModal" >
                 <img src="image/<?php echo isset($b->foto)?$b->foto:''; ?>" width="300px" height="300px" style=" display: block;margin-left: auto;margin-right: auto;"> <br>
 				<textarea class="ckeditor" rows="2" name="deskripsi_barang" id="deskripsi_barang" readonly placeholder="deskripsi_barang"><?php echo $b->deskripsi_barang; ?></textarea>
+				<br>
+				<table class="table table-bordered">
+				<tr>
+					<th width="200px;">Nama Konsumen</th>
+					<th>Review</th>
+				</tr>
+				<?php $rev=$this->db->query("select * from review where kode_barang ='$b->kode_barang'")->result();?>
+				<?php foreach($rev as $r):?>
+				<tr>
+					<td><?=$r->customer?></td>
+					<td><?=$r->review?></td>
+				</tr>
+			<?php endforeach;?>
+				</table>
               </div>
               <!-- <div class="modal-footer">
                 <a href="<?=base_url('web/spek/')?>" class="btn btn-danger btn-md btn-flat">Lihat spesifikasi</a>
@@ -178,6 +194,31 @@
               <div class="modal-footer">
               <a style="padding-top:5px;" href="<?php echo base_url('toko/add_to_kredit/'.$b->kode_barang)?>" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-heart-o"></i> Ajukan Kredit</a> 
                 </div>
+            </div>
+          </div>
+        </div>
+  <?php endforeach;?>
+
+  <?php foreach($d as $b):?>
+             <div class="modal fade" id="quicke<?=$b->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">&nbsp;Review</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body" id="IsiModal" >
+			  <form action="<?php echo base_url('toko/add_review')?>" method="POST">
+			  	<input type="hidden" name="kode_barang" id="kode_barang" value="<?=$b->kode_barang?>">
+			  	<input type="hidden" name="nama_konsumen" id="nama_konsumen" value="<?=$_SESSION['nama_lengkap']?>">
+				  Tulis Review untuk produk ini
+	            <input type="text" name="review" id="review" class="form-control">
+              </div>
+			 
+              <div class="modal-footer">
+           	<button type="submit" class="btn btn-danger btn-sm">Save</button>
+                </div>
+				</form>
             </div>
           </div>
         </div>

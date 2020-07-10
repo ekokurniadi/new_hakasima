@@ -210,6 +210,23 @@ class Toko extends MY_Controller {
             redirect(site_url('toko/index'));
     }
 
+    public function add_review()
+    {
+        $customer=$this->input->post('nama_konsumen');
+        $kode=$this->input->post('kode_barang');
+        $review=$this->input->post('review');
+        $tanggal=date('Y-m-d');
+        $data=array(
+            'kode_barang'=>$kode,
+            'customer'=>$customer,
+            'review'=>$review,
+            'tanggal'=>$tanggal
+        );
+        $this->db->insert('review',$data);
+        redirect('toko','refresh');
+        
+    }
+
     public function hapus_keranjang($id)
     {
         $hapus =$this->db->query("DELETE FROM detail_pembelian where id='$id'");

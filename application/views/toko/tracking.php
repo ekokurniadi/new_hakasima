@@ -14,6 +14,7 @@
 										<th>Ekspedisi</th>
 										<th>Layanan</th>
 										<th>Status</th>
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -38,6 +39,7 @@
 										<td style="text-align:center"><?=$lay['ekspedisi']?></td>
 										<td style="text-align:center"><?=$dt->layanan?></td>
 										<td style="text-align:center"><?=$dt->status?></td>
+									
 									</tr>
 								<?php endforeach;?>
 								</tbody>
