@@ -59,6 +59,9 @@
             <tr>
                 <th>No</th>
 		<th>Tentang Kami</th>
+		<th>Nama Bank</th>
+		<th>Atas Nama</th>
+		<th>No Rekening</th>
 		<th>Action</th>
             </tr>
             </thead><?php
@@ -69,6 +72,9 @@
                 <tr>
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $tentang->tentang_kami ?></td>
+			<td><?php echo $tentang->nama_bank ?></td>
+			<td><?php echo $tentang->atas_nama ?></td>
+			<td><?php echo $tentang->no_rekening ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('tentang/read/'.$tentang->id),'<i class="fa fa-eye"></i>',array('title'=>'detail','class'=>'btn btn-default btn-sm')); 

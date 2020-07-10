@@ -30,6 +30,33 @@
             </div>
         </div>
     </div>
+	   
+    <div class="box-body"> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="varchar">Nama Bank <?php echo form_error('nama_bank') ?></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="nama_bank" id="nama_bank" placeholder="Nama Bank" value="<?php echo $nama_bank; ?>" />
+            </div>
+        </div>
+    </div>
+	   
+    <div class="box-body"> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="varchar">Atas Nama <?php echo form_error('atas_nama') ?></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="atas_nama" id="atas_nama" placeholder="Atas Nama" value="<?php echo $atas_nama; ?>" />
+            </div>
+        </div>
+    </div>
+	   
+    <div class="box-body"> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="varchar">No Rekening <?php echo form_error('no_rekening') ?></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="no_rekening" id="no_rekening" placeholder="No Rekening" value="<?php echo $no_rekening; ?>" />
+            </div>
+        </div>
+    </div>
 	    
 <div class="box-footer">
     <input type="hidden" name="id" value="<?php echo $id; ?>" /> 

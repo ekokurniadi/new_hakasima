@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2020 at 04:59 AM
+-- Generation Time: Jul 10, 2020 at 09:18 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -186,7 +186,21 @@ INSERT INTO `detail_pembelian` (`id`, `kode_pembelian`, `kode_barang`, `nama_bar
 (70, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
 (71, 'TRX-CUS25042002', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
 (72, 'TRX-CUS25042003', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
-(73, 'TRX-CUS25042004', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001');
+(73, 'TRX-CUS25042004', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(74, 'TRX-CUS25042001', 'BRG14112019001', '6 PCS COOKWARE SET', 100000, 6, 100000, '', 0, 0, 'proses', 'CUS25042020001'),
+(75, 'TRX-CUS25042001', 'BRG14112019001', '6 PCS COOKWARE SET', 100000, 6, 100000, '', 0, 0, 'proses', 'CUS25042020001'),
+(77, 'TRX-CUS25042005', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'baru', 'CUS25042020001');
+
+--
+-- Triggers `detail_pembelian`
+--
+DELIMITER $$
+CREATE TRIGGER `add` BEFORE INSERT ON `detail_pembelian` FOR EACH ROW BEGIN
+ UPDATE stok SET stok=stok-NEW.qty
+ WHERE kode_barang=NEW.kode_barang;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -290,7 +304,13 @@ CREATE TABLE `konsumen` (
 INSERT INTO `konsumen` (`id`, `customer_id`, `nama_lengkap`, `no_ktp`, `no_hp`, `jenis_kelamin`, `tanggal_lahir`, `alamat`, `email`, `password`, `foto`, `role`) VALUES
 (1, 'CUS25042020001', 'Diki', '1571020202950041', '085296072649', 'Laki-Laki', '2020-04-23', 'Jln. Ra. Kartini Rt.38 Kel.talang bakung Kecamatan Jambi selatan', 'eko@gmail.com', '123', 'images_(7).jpeg', 'konsumen'),
 (2, 'CUS29042020002', 'Angga', NULL, NULL, 'Laki-Laki', '2020-04-15', 'Tangkit', 'a@gmail.com', '123', 'user_admin.jpeg', 'konsumen'),
-(3, 'CUS07062020003', 'Kurniadi', '1523686523125678', '081366424345', 'Laki-Laki', '2020-06-08', 'Jambi', 'ekokurniadi.02@gmail.com', '123', 'user1580114086.jpg', 'konsumen');
+(3, 'CUS07062020003', 'Kurniadi', '1523686523125678', '081366424345', 'Laki-Laki', '2020-06-08', 'Jambi', 'ekokurniadi.02@gmail.com', '123', 'user1580114086.jpg', 'konsumen'),
+(4, 'CUS09072020004', 'medi', '1571030404990044', '081272776041', 'Laki-Laki', '2020-07-09', 'JAMBI', 'medi@gmail.com', '123', 'Pelunasan_Invoice_Dealer.PNG', 'konsumen'),
+(5, 'CUS09072020005', 'DIAN', '1571020202950041', '0831273171231', 'Perempuan', '2020-07-09', 'JAMBI', 'dian@gmail.com', '12345', 'sales_stock.PNG', 'konsumen'),
+(6, 'CUS09072020006', 'a', '1571020202950041', '089955228555', 'Laki-Laki', '2020-07-09', 'JAMBI', 'do@gmail.com', '123', 'sales_stock2.PNG', 'konsumen'),
+(7, 'CUS09072020007', 'Angga', '0000000000000123', '078', 'Laki-Laki', '2020-07-09', 'JAMBI', 'eka@gmail.com', '5555', 'Pelunasan_Invoice_Dealer.PNG', 'konsumen'),
+(8, 'CUS09072020008', 'fasdfasf', '1571030404990044', '3', 'Laki-Laki', '2020-07-30', 'g', 'g@gmail.com', '123', 'Pelunasan_Invoice_Dealer.PNG', 'konsumen'),
+(9, 'CUS09072020009', 'r', '7', '3', 'Laki-Laki', '2020-07-28', '3', '3@gmail.com', '123', 'sales_stock2.PNG', 'konsumen');
 
 -- --------------------------------------------------------
 
@@ -481,6 +501,19 @@ INSERT INTO `provinsi` (`id`, `provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(1) NOT NULL,
+  `customer` varchar(50) NOT NULL,
+  `review` text NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sales`
 --
 
@@ -586,21 +619,21 @@ CREATE TABLE `stok` (
 --
 
 INSERT INTO `stok` (`id`, `kode_barang`, `nama_barang`, `stok`) VALUES
-(4, 'BRG14112019001', '6 PCS COOKWARE SET', 16),
+(4, 'BRG14112019001', '6 PCS COOKWARE SET', 0),
 (5, 'BRG14112019002', 'NEW AMAZING PAN', 19),
 (6, 'BRG05052020003', 'Ampia', -5),
-(7, 'BRG07062020004', 'Wajan', 10),
-(8, 'BRG14112019001', '6 PCS COOKWARE SET', -1),
+(7, 'BRG07062020004', 'Wajan', 9),
+(8, 'BRG14112019001', '6 PCS COOKWARE SET', -17),
 (9, 'BRG14112019002', 'NEW AMAZING PAN', 0),
-(12, 'BRG14112019001', '6 PCS COOKWARE SET', 16),
+(12, 'BRG14112019001', '6 PCS COOKWARE SET', 0),
 (13, 'BRG14112019002', 'NEW AMAZING PAN', 19),
 (14, 'BRG05052020003', 'Ampia', -5),
-(15, 'BRG07062020004', 'Wajan', 10),
-(16, 'BRG14112019001', '6 PCS COOKWARE SET', -1),
+(15, 'BRG07062020004', 'Wajan', 9),
+(16, 'BRG14112019001', '6 PCS COOKWARE SET', -17),
 (17, 'BRG14112019002', 'NEW AMAZING PAN', 0),
 (18, 'BRG05052020003', 'Ampia', 0),
-(19, 'BRG07062020004', 'Wajan', 0),
-(20, 'BRG23062020005', 'dfasfas', 0);
+(19, 'BRG07062020004', 'Wajan', -1),
+(20, 'BRG23062020005', 'dfasfas', -1);
 
 -- --------------------------------------------------------
 
@@ -624,18 +657,18 @@ CREATE TABLE `tagihan_konsumen` (
 --
 
 INSERT INTO `tagihan_konsumen` (`id`, `id_prospek`, `id_customer`, `nama_konsumen`, `nominal`, `tanggal_pembayaran`, `keterangan`, `status`) VALUES
-(27, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '2020-06-23', '<p>Angsuran ke 1</p>', 'Angsuran'),
-(28, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(29, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(30, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(31, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(32, 'PRS-026', 'CUS23062020021', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(33, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(34, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(35, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(36, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(37, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
-(38, 'PRS-025', 'CUS23062020020', 'Diki', 20000, '0000-00-00', '', 'Angsuran');
+(27, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '2020-06-23', '<p>Angsuran ke 1</p>', 'Angsuran'),
+(28, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(29, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(30, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(31, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(32, 'PRS-026', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(33, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(34, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(35, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(36, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(37, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran'),
+(38, 'PRS-025', 'CUS25042020001', 'Diki', 20000, '0000-00-00', '', 'Angsuran');
 
 -- --------------------------------------------------------
 
@@ -645,15 +678,18 @@ INSERT INTO `tagihan_konsumen` (`id`, `id_prospek`, `id_customer`, `nama_konsume
 
 CREATE TABLE `tentang` (
   `id` int(11) NOT NULL,
-  `tentang_kami` text NOT NULL
+  `tentang_kami` text NOT NULL,
+  `nama_bank` varchar(100) NOT NULL,
+  `atas_nama` varchar(100) NOT NULL,
+  `no_rekening` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tentang`
 --
 
-INSERT INTO `tentang` (`id`, `tentang_kami`) VALUES
-(1, '<p>Kami adalah perusahaan penjualan barang ABC terbesar di provinsi jambi</p>\r\n\r\n<p> </p>');
+INSERT INTO `tentang` (`id`, `tentang_kami`, `nama_bank`, `atas_nama`, `no_rekening`) VALUES
+(1, '<p>Kami adalah perusahaan penjualan barang ABC terbesar di provinsi jambi</p>\r\n\r\n<p> </p>', 'BCA', 'HAKASIMA', '12345678');
 
 -- --------------------------------------------------------
 
@@ -771,6 +807,12 @@ ALTER TABLE `provinsi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sales`
 --
 ALTER TABLE `sales`
@@ -844,7 +886,7 @@ ALTER TABLE `detail_ongkir`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `detail_skema`
@@ -868,7 +910,7 @@ ALTER TABLE `kabupaten`
 -- AUTO_INCREMENT for table `konsumen`
 --
 ALTER TABLE `konsumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `layanan`
@@ -905,6 +947,12 @@ ALTER TABLE `prospek`
 --
 ALTER TABLE `provinsi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sales`

@@ -23,7 +23,7 @@
 							<h2 class="product-name"><?=$barang['nama_barang']?></h2>
 							<div>
 								<h3 class="product-price">Rp. <?=number_format($barang['harga'],0,',','.')?>,-</h3>
-								<span class="product-available">In Stock</span>
+								<span class="product-available" style="font-size:20px !important">Stok Tersedia : <?php $kd=$barang['kode_barang']; $data=$this->db->query("select stok from stok where kode_barang='$kd'")->row_array();echo $data['stok']?></span>
 							</div>
 							<p><?=$barang['deskripsi_barang']?></p>
 

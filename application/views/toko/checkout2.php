@@ -111,6 +111,16 @@
                             <div class="order-col">Alamat Pengiriman<br>
                                 <textarea name="alamat" id="alamat" cols="50" rows="5"></textarea>
                             </div>
+                            <?php $data=$this->db->query("select * from tentang")->row_array();?>
+                            <div class="order-col">Nama Bank<br>
+                               <input type="text" class="form-control" value="<?php echo $data['nama_bank']?>">
+                            </div>
+                            <div class="order-col">Atas Nama<br>
+                                <input type="text" class="form-control" value="<?php echo $data['atas_nama']?>">
+                            </div>
+                            <div class="order-col">No Rekening<br>
+                                <input type="text" class="form-control" value="<?php echo $data['no_rekening']?>">
+                            </div>
 						<input type="hidden" name="id_trx" id="id_trx" value="<?=$this->uri->segment(3)?>">
                         <input type="hidden" name="pengguna" id="pengguna" value="<?=$_SESSION['customer_id']?>">
                         <button class="primary-btn order-submit" type="submit">Order</button>
