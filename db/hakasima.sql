@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2020 at 09:18 AM
+-- Generation Time: Jul 10, 2020 at 11:12 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -506,10 +506,20 @@ INSERT INTO `provinsi` (`id`, `provinsi`) VALUES
 
 CREATE TABLE `review` (
   `id` int(1) NOT NULL,
+  `kode_barang` varchar(100) NOT NULL,
   `customer` varchar(50) NOT NULL,
   `review` text NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `kode_barang`, `customer`, `review`, `tanggal`) VALUES
+(1, '', 'Diki', 'dfadsfadsf', '2020-07-09 17:00:00'),
+(2, 'BRG14112019001', 'Diki', 'fasdfasdfasdf', '2020-07-09 17:00:00'),
+(3, 'BRG07062020004', 'Diki', 'fdsfdgsdfgsdfg', '2020-07-09 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -952,7 +962,7 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sales`
