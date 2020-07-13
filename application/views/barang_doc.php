@@ -15,6 +15,21 @@
             }
         </style>
     </head>
+    <table>
+             <tr>
+               <td></td>
+             </tr>
+           </table>
+         <br><br><p style="font-size:15px;text-align: center;" >PD. HAKASIMA
+           <br>KOTA JAMBI</p>
+          <br>
+          <br>
+        
+           <hr>      
+           
+           <br>
+           <div style="text-align: center;font-size: 13pt"><b>Laporan Data Barang</b></div>  
+		   <br>
     <body>
         <h2>Barang List</h2>
         <table class="word-table" style="margin-bottom: 10px">
