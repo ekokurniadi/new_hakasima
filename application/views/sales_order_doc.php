@@ -65,5 +65,26 @@
             }
             ?>
         </table>
+	
+        <table style="margin-left:650px;">
+            <tr>
+                <td>Jambi,</td>
+                <td><?php echo tgl_indo(date('Y-m-d'))?></td>
+            </tr>
+        </table>
+        <table style="margin-left:650px;">
+            <tr>
+                <td>Kepala Cabang</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <table style="margin-left:650px;">
+            <tr>
+                <td>Wenes Krisandi</td>
+            </tr>
+        </table>
     </body>
 </html>
