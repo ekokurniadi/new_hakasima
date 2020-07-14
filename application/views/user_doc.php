@@ -20,7 +20,7 @@
                <td></td>
              </tr>
            </table>
-         <br><br><p style="font-size:15px;text-align: center;" >PD. HAKASIMA
+         <br><br><p style="font-size:15px;text-align: center;">PD. HAKASIMA
            <br>KOTA JAMBI</p>
           <br>
           <br>
