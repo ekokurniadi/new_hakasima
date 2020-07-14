@@ -28,7 +28,7 @@
            <hr>      
            
            <br>
-           <div style="text-align: center;font-size: 13pt"><b>Laporan Data User</b></div>  
+           <div style="text-align: center;font-size: 13pt"><b> Laporan Data User</b></div>  
 		   <br>
     <body>
         <h2>User List</h2>
