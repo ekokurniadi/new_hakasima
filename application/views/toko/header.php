@@ -77,13 +77,13 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
-								
-									<input class="input" placeholder="Ingin mencari sesuatu ?" style="width:300px;">
+								<form method="post" action="<?php echo base_url('toko/search_product2')?>">
+									<input class="input" name="key" id="key" placeholder="Ingin mencari sesuatu ?" style="width:300px;">
 									<button class="search-btn"><span class="fa fa-search"></span> Cari</button>
 								</form>
 							</div>
 						</div>
+						<!-- /SEARCH BAR -->
 						<!-- /SEARCH BAR -->
 
 						<!-- ACCOUNT -->
@@ -346,7 +346,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="<?php echo base_url('toko')?>">Home</a></li>
+						<li class="active"><a href="<?php echo base_url('toko/pages')?>">Home</a></li>
 						
 						<li><a href="<?php echo base_url('toko/tentang_kami')?>">Tentang Kami</a></li>
 							<?php $id_cus=$_SESSION['customer_id']; 

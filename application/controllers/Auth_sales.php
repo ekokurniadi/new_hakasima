@@ -5,7 +5,7 @@ class Auth_sales extends MY_Controller
 	public function logged_in_check()
 	{
 		if ($this->session->userdata("logged_in")) {
-			redirect("toko");
+			redirect("toko/pages");
 		}
 	}
 	public function index()
@@ -24,7 +24,7 @@ class Auth_sales extends MY_Controller
 			} else {
 				$this->session->set_userdata($this->auth->get_data());
 				$this->session->set_userdata("logged_in", true);
-				redirect("toko");
+				redirect("toko/pages");
 			}
 		}
 		$this->load->view("web/login");
@@ -33,7 +33,7 @@ class Auth_sales extends MY_Controller
 	{
 		$this->session->unset_userdata("logged_in");
 		$this->session->sess_destroy();
-		redirect("auth_sales");
+		redirect("toko");
 	}
 	public function register()
 	{

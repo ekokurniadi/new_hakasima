@@ -18,6 +18,41 @@ class Toko extends MY_Controller {
         $data=array(
            
         );
+        $this->load->view('toko/header_utama',$data);
+        $this->load->view('toko/index_utama');
+        $this->load->view('toko/footer');
+        
+    }
+
+    public function search_product()
+    {
+        $key=$this->input->post('key');
+        $data=array(
+           'key'=>$key,
+        );
+        $this->load->view('toko/header_utama',$data);
+        $this->load->view('toko/search_product');
+        $this->load->view('toko/footer');
+        
+    }
+
+    public function search_product2()
+    {
+        $key=$this->input->post('key');
+        $data=array(
+           'key'=>$key,
+        );
+        $this->load->view('toko/header',$data);
+        $this->load->view('toko/search_product');
+        $this->load->view('toko/footer');
+        
+    }
+
+    public function pages()
+    {
+        $data=array(
+           
+        );
         $this->load->view('toko/header',$data);
         $this->load->view('toko/index');
         $this->load->view('toko/footer');
@@ -181,7 +216,7 @@ class Toko extends MY_Controller {
             'total'=>$total
         );
         $this->db->insert('detail_pembelian',$data2);
-        redirect('toko/index','refresh');
+        redirect('toko/pages','refresh');
        
         
     }
@@ -207,7 +242,7 @@ class Toko extends MY_Controller {
             $this->Prospek_model->insert($data);
             $_SESSION['pesan']="Pengajuan Kredit berhasil di proses silahkan menunggu konfirmasi";
             $_SESSION['tipe']="danger";
-            redirect(site_url('toko/index'));
+            redirect(site_url('toko/pages'));
     }
 
     public function add_review()
@@ -223,7 +258,7 @@ class Toko extends MY_Controller {
             'tanggal'=>$tanggal
         );
         $this->db->insert('review',$data);
-        redirect('toko','refresh');
+        redirect('toko/pages','refresh');
         
     }
 
@@ -277,7 +312,7 @@ class Toko extends MY_Controller {
     public function bayar()
     {
        $cust_id=$_SESSION['customer_id'];
-       echo $cust_id;   
+    //    echo $cust_id;   
        $data_kredit=$this->db->query("SELECT a.id_prospek,a.kode_barang,a.nama_barang,b.* from prospek a join tagihan_konsumen b on a.id_prospek=b.id_prospek where b.id_customer='$cust_id'")->result();
        $data=array(
            'detail'=>$data_kredit,
@@ -316,13 +351,19 @@ class Toko extends MY_Controller {
         );
         $this->db->insert('pembelian',$data);
         $this->db->query("update detail_pembelian set status='proses' where kode_pembelian='$kode_pembelian'");
-        redirect('toko/index','refresh');
+        redirect('toko/pages','refresh');
         
     }
 
     public function tentang_kami()
     {
         $this->load->view('toko/header');
+        $this->load->view('toko/tentang_kami');
+        // $this->load->view('toko/footer');
+    }
+    public function tentang_kami2()
+    {
+        $this->load->view('toko/header_utama');
         $this->load->view('toko/tentang_kami');
         // $this->load->view('toko/footer');
     }
