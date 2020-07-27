@@ -141,6 +141,7 @@ class Pembelian extends MY_Controller {
 		'ekspedisi' => set_value('ekspedisi', $row->ekspedisi),
 		'layanan' => set_value('layanan', $row->layanan),
 		'status' => set_value('status', $row->status),
+		'gambar' => set_value('gambar', $row->bukti_transfer),
 	    );
             $this->load->view('header');
             $this->load->view('pembelian_form', $data);

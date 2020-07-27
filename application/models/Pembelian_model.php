@@ -64,6 +64,12 @@ class Pembelian_model extends CI_Model
         $this->db->update($this->table, $data);
     }
 
+    function update2($id, $data)
+    {
+        $this->db->where($this->id, $id);
+        $this->db->update($this->table, $data);
+    }
+
     // delete data
     function delete($id)
     {

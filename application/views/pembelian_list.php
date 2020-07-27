@@ -68,6 +68,7 @@
 		<th>Ekspedisi</th>
 		<th>Layanan</th>
 		<th>Status</th>
+		<th>Bukti Transfer</th>
 		<th>Action</th>
             </tr>
             </thead>
@@ -90,10 +91,10 @@
 			<td><?php echo $lay['ekspedisi'] ?></td>
 			<td><?php echo $pembelian->layanan ?></td>
 			<td><?php echo $pembelian->status ?></td>
+			<td><a href="<?php echo base_url().'image/'.$pembelian->bukti_transfer ?>" target="_blank"><img src="<?php echo base_url().'image/'.$pembelian->bukti_transfer ?>" width="100px;"></a></td>
 			<td style="text-align:center" width="200px">
 				<?php 
-				// echo anchor(site_url('pembelian/read/'.$pembelian->id),'<i class="fa fa-eye"></i> View',array('title'=>'detail','class'=>'btn bg-maroon btn-sm')); 
-				// echo '  '; 
+			
 				echo anchor(site_url('pembelian/update/'.$pembelian->id),'<i class="fa fa-pencil-square-o"></i> View',array('title'=>'edit','class'=>'btn btn-success btn-sm')); 
 				echo '  '; 
 				// echo anchor(site_url('pembelian/delete/'.$pembelian->id),'<i class="fa fa-trash-o"></i>','title="delete" class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 

@@ -14,7 +14,7 @@
 										<th>Ekspedisi</th>
 										<th>Layanan</th>
 										<th>Status</th>
-										
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -39,13 +39,47 @@
 										<td style="text-align:center"><?=$lay['ekspedisi']?></td>
 										<td style="text-align:center"><?=$dt->layanan?></td>
 										<td style="text-align:center"><?=$dt->status?></td>
-									
+										<td style="text-align:center" width="200px">
+										<?php 
+										if($dt->status =='proses' && $dt->bukti_transfer == ""){
+										 echo "<a href='#quicke$dt->id' id='$dt->id'  data-toggle='modal' class='btn btn-success'> <span class='fa fa-eye'> Upload Bukti Pembayaran</span></a>";
+										echo '  '; 
+										} else if($dt->status=='selesai') {
+											echo ' ';
+										}
+										?>
+									</td>
 									</tr>
 								<?php endforeach;?>
 								</tbody>
+								<?php foreach($detail as $b):?>
+								<div class="modal fade" id="quicke<?=$b->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title" id="myModalLabel">&nbsp;Review</h4>
+									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								</div>
+								<div class="modal-body" id="IsiModal" >
+								<form action="<?php echo base_url('toko/update_action')?>" method="POST" enctype="multipart/form-data">
+									<input type="text" name="id" id="id" value="<?=$b->id?>">
+									<input type="file" name="bukti_transfer" id="bukti_transfer" class="form-control">
+								</div>
+								<div class="modal-footer">
+								<button type="submit" class="btn btn-danger btn-sm">Save</button>
+									</div>
+									</form>
+								</div>
+							</div>
+							</div>
+					<?php endforeach;?>
 							</table>
+
+							
 						</div>
 					</div>
+						
 				</div>
 			</div>
 		</div>
+		

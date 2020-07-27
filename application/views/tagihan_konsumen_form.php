@@ -80,7 +80,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="varchar">Status <?php echo form_error('status') ?></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="status" id="status" placeholder="Status" value="<?php echo $status; ?>" />
+              <select name="status" id="status" class="form-control">
+              <option value="<?=$status?>">Select an Option</option>
+              <option value="Lunas">Lunas</option>
+              </select>
             </div>
         </div>
     </div>

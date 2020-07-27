@@ -106,6 +106,14 @@
             </div>
         </div>
     </div>
+    <div class="box-body"> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="varchar">Bukti Transfer</label>
+            <div class="col-sm-6">
+              <img src="<?php echo base_url().'image/'.$gambar?>" alt="" width="500px">
+            </div>
+        </div>
+    </div>
 	   
     <div class="box-body"> 
         <div class="form-group">

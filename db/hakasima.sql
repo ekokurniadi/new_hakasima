@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2020 at 11:12 AM
+-- Generation Time: Jul 27, 2020 at 11:19 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -189,7 +189,8 @@ INSERT INTO `detail_pembelian` (`id`, `kode_pembelian`, `kode_barang`, `nama_bar
 (73, 'TRX-CUS25042004', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
 (74, 'TRX-CUS25042001', 'BRG14112019001', '6 PCS COOKWARE SET', 100000, 6, 100000, '', 0, 0, 'proses', 'CUS25042020001'),
 (75, 'TRX-CUS25042001', 'BRG14112019001', '6 PCS COOKWARE SET', 100000, 6, 100000, '', 0, 0, 'proses', 'CUS25042020001'),
-(77, 'TRX-CUS25042005', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'baru', 'CUS25042020001');
+(77, 'TRX-CUS25042005', 'BRG07062020004', 'Wajan', 150000, 1, 150000, '', 0, 0, 'proses', 'CUS25042020001'),
+(78, 'TRX-CUS25042005', 'BRG05052020003', 'Ampia', 250000, 1, 250000, '', 0, 0, 'proses', 'CUS25042020001');
 
 --
 -- Triggers `detail_pembelian`
@@ -423,19 +424,21 @@ CREATE TABLE `pembelian` (
   `ekspedisi` varchar(50) DEFAULT NULL,
   `layanan` varchar(50) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `pengiriman` double NOT NULL DEFAULT '0'
+  `pengiriman` double NOT NULL DEFAULT '0',
+  `bukti_transfer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id`, `kode_pembelian`, `tanggal`, `customer_id`, `alamat`, `provinsi`, `kecamatan`, `kabupaten`, `ekspedisi`, `layanan`, `status`, `pengiriman`) VALUES
-(1, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0),
-(2, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0),
-(3, 'TRX-CUS25042002', '2020-06-23', 'CUS25042020001', 'sdfasdfdagg', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000),
-(4, 'TRX-CUS25042003', '2020-06-24', 'CUS25042020001', 'laksd;lfa', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000),
-(5, 'TRX-CUS25042004', '2020-07-02', 'CUS25042020001', '<p>asdasdfasdf</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'selesai', 10000);
+INSERT INTO `pembelian` (`id`, `kode_pembelian`, `tanggal`, `customer_id`, `alamat`, `provinsi`, `kecamatan`, `kabupaten`, `ekspedisi`, `layanan`, `status`, `pengiriman`, `bukti_transfer`) VALUES
+(1, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0, ''),
+(2, 'TRX-CUS25042001', '2020-06-23', 'CUS25042020001', '<p>fadfa</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 0, ''),
+(3, 'TRX-CUS25042002', '2020-06-23', 'CUS25042020001', 'sdfasdfdagg', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000, ''),
+(4, 'TRX-CUS25042003', '2020-06-24', 'CUS25042020001', 'laksd;lfa', '1', NULL, 'Kota Jambi', '1', 'REG', 'baru', 10000, ''),
+(5, 'TRX-CUS25042004', '2020-07-02', 'CUS25042020001', '<p>asdasdfasdf</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'selesai', 10000, ''),
+(6, 'TRX-CUS25042005', '2020-07-27', 'CUS25042020001', '<p>adsfadsfadsfadf</p>', '1', NULL, 'Kota Jambi', '1', 'REG', 'proses', 10000, 'sales_stock2.PNG');
 
 -- --------------------------------------------------------
 
@@ -631,17 +634,17 @@ CREATE TABLE `stok` (
 INSERT INTO `stok` (`id`, `kode_barang`, `nama_barang`, `stok`) VALUES
 (4, 'BRG14112019001', '6 PCS COOKWARE SET', 0),
 (5, 'BRG14112019002', 'NEW AMAZING PAN', 19),
-(6, 'BRG05052020003', 'Ampia', -5),
+(6, 'BRG05052020003', 'Ampia', -6),
 (7, 'BRG07062020004', 'Wajan', 9),
 (8, 'BRG14112019001', '6 PCS COOKWARE SET', -17),
 (9, 'BRG14112019002', 'NEW AMAZING PAN', 0),
 (12, 'BRG14112019001', '6 PCS COOKWARE SET', 0),
 (13, 'BRG14112019002', 'NEW AMAZING PAN', 19),
-(14, 'BRG05052020003', 'Ampia', -5),
+(14, 'BRG05052020003', 'Ampia', -6),
 (15, 'BRG07062020004', 'Wajan', 9),
 (16, 'BRG14112019001', '6 PCS COOKWARE SET', -17),
 (17, 'BRG14112019002', 'NEW AMAZING PAN', 0),
-(18, 'BRG05052020003', 'Ampia', 0),
+(18, 'BRG05052020003', 'Ampia', -1),
 (19, 'BRG07062020004', 'Wajan', -1),
 (20, 'BRG23062020005', 'dfasfas', -1);
 
@@ -896,7 +899,7 @@ ALTER TABLE `detail_ongkir`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `detail_skema`
@@ -944,7 +947,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `prospek`

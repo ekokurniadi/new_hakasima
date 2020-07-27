@@ -9,6 +9,7 @@ class Toko extends MY_Controller {
         parent::__construct();
         $this->load->model('Ongkir_model');
         $this->load->model('Prospek_model');
+        $this->load->model('Pembelian_model');
         $this->load->library('form_validation');
     }
 
@@ -313,7 +314,7 @@ class Toko extends MY_Controller {
     {
        $cust_id=$_SESSION['customer_id'];
     //    echo $cust_id;   
-       $data_kredit=$this->db->query("SELECT a.id_prospek,a.kode_barang,a.nama_barang,b.* from prospek a join tagihan_konsumen b on a.id_prospek=b.id_prospek where b.id_customer='$cust_id'")->result();
+       $data_kredit=$this->db->query("SELECT a.id_prospek,a.kode_barang,a.nama_barang,b.* from prospek a join tagihan_konsumen b on a.id_prospek=b.id_prospek where b.id_customer='$cust_id' and b.status ='Angsuran'")->result();
        $data=array(
            'detail'=>$data_kredit,
        );
@@ -367,6 +368,35 @@ class Toko extends MY_Controller {
         $this->load->view('toko/tentang_kami');
         // $this->load->view('toko/footer');
     }
+
+    public function update_action() 
+    {
+            $id=$this->input->post('id');
+            $this->load->library('upload');
+            $config['upload_path']   = './image/';
+            $config['overwrite']     = true;
+            $config['allowed_types'] = 'gif|jpeg|png|jpg|bmp|PNG|JPEG|JPG';
+            $config['file_name'] = $_FILES['bukti_transfer']['name'];
+
+            $this->upload->initialize($config);
+
+            if($_FILES['bukti_transfer']['name'])
+            {
+                if($this->upload->do_upload('bukti_transfer'))
+                {
+                $gbr = $this->upload->data();
+                $data = array(
+                    'bukti_transfer' =>  $gbr['file_name'],
+                );
+            $this->Pembelian_model->update2($this->input->post('id', TRUE), $data);
+            $this->session->set_flashdata('message', 'Create Record Success');
+            redirect('toko/tracking','refresh');
+            }
+        }
+                   
+                       
+        }
+
 
 }
 
